@@ -1,5 +1,6 @@
 package com.ualr.recyclerviewassignment.Utils;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,7 +68,7 @@ public class AdapterListBasic extends RecyclerView.Adapter{
             message = v.findViewById(R.id.message);
             lyt_parent = v.findViewById(R.id.lyt_parent);
 
-            lyt_parent.setOnClickListener(new View.OnClickListener(){
+           lyt_parent.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
                     mOnItemClickListener.onItemCLick(view, mItems.get(getLayoutPosition()), getLayoutPosition());
@@ -85,5 +86,11 @@ public class AdapterListBasic extends RecyclerView.Adapter{
     public void setOnItemClickListener(final OnItemClickListener mItemClickListener){
         this.mOnItemClickListener = mItemClickListener;
     }
+
+    public void addItem(int position, Inbox inbox){
+        mItems.add(position, inbox);
+        notifyItemInserted(position);
+    }
+
 }
 
